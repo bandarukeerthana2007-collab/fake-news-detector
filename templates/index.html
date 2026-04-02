@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fake News Detector</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* Background Image */
+            background: url("/static/bg.jpg") no-repeat center center/cover;
+        }
+
+        /* Calm overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* dark calm layer */
+            backdrop-filter: blur(5px); /* smooth blur */
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            resize: none;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            background: #5a67d8;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #434190;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .fake { color: red; }
+        .real { color: green; }
+
+        .loader {
+            display: none;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 2;
+            cursor: pointer;
+            color: white;
+            font-size: 20px;
+        }
+
+        .dark .container {
+            background: rgba(30, 30, 30, 0.9);
+            color: white;
+        }
+
+    </style>
+
+    <script>
+        function showLoader() {
+            document.getElementById("loader").style.display = "block";
+        }
+
+        function toggleDark() {
+            document.body.classList.toggle("dark");
+        }
+    </script>
+
+</head>
+
+<body>
+
+<div class="toggle" onclick="toggleDark()">🌙</div>
+
+<div class="container">
+    <h2>📰 Fake News Detector</h2>
+
+    <form method="POST" onsubmit="showLoader()">
+        <textarea name="news" rows="5" placeholder="Enter news..."></textarea>
+        <button type="submit">Check</button>
+    </form>
+
+    <div id="loader" class="loader">🔄 Analyzing...</div>
+
+    {% if result %}
+        <div class="result {% if result == 'FAKE' %}fake{% else %}real{% endif %}">
+            Result: {{ result }} <br>
+            Confidence: {{ confidence }}%
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
