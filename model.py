@@ -1,6 +1,7 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
+# Sample training data
 texts = [
     "Breaking news president signs new law",
     "Scientists discovered new species",
