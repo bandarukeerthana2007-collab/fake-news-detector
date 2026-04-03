@@ -1,43 +1,45 @@
-# Fake News Detector
+#  Fake News Detector
 
 ##  About the Project
 
-This project is a simple web application that helps users check whether a piece of news is real or fake.
-The user just needs to enter the news text, and the system will analyze it and give a prediction.
+This project is a web-based application that helps users identify whether a news article is real or fake.
+The user can either enter the news text directly or provide a news URL, and the system will analyze it and give a prediction.
 
-The main idea behind this project is to show how basic Machine Learning can be used in real-world problems like detecting fake news.
-
----
-
-##  What This Project Does
-
-* Takes news text as input
-* Analyzes the content using a machine learning model
-* Predicts whether the news is **Real** or **Fake**
-* Displays the result along with a confidence score
+This project demonstrates how basic Machine Learning can be applied to solve real-world problems like fake news detection.
 
 ---
 
-##  Technologies Used
+##  Features
+
+* Detects whether news is **Fake or Real**
+* Accepts both **text input and URL input**
+* Displays **confidence percentage**
+* Shows **history of checked news**
+* Modern and clean user interface
+* Responsive design for different devices
+
+---
+
+## Technologies Used
 
 * Python (Flask)
 * HTML, CSS
 * Scikit-learn (Machine Learning)
+* Newspaper3k (for extracting news from URLs)
 
 ---
 
 ##  How It Works
 
-When the user enters some news text:
-
-1. The text is processed using a vectorizer
-2. The trained model analyzes the text
-3. The system predicts whether it is real or fake
-4. The result is shown on the screen
+1. User enters news text or provides a URL
+2. If URL is given, the system extracts the article content
+3. The text is processed using a machine learning model
+4. The system predicts whether the news is real or fake
+5. The result is displayed along with a confidence score
 
 ---
 
-## Project Structure
+##  Project Structure
 
 fake-news-detector/
 
@@ -53,26 +55,26 @@ fake-news-detector/
 1. Download or clone the project
 2. Open the folder in VS Code
 3. Install required libraries:
-   pip install flask scikit-learn
-4. Run the app:
+   pip install flask scikit-learn newspaper3k
+4. Run the application:
    python app.py
-5. Open your browser and go to:
+5. Open browser and go to:
    http://127.0.0.1:5000/
 
 ---
 
 ##  Future Improvements
 
-* Add URL-based news checking
 * Improve accuracy using a larger dataset
+* Add user authentication
 * Deploy the project online
-* Add history of checked news
+* Enhance UI/UX further
 
 ---
 
 ##  Conclusion
 
-This project is a basic implementation of a fake news detection system using machine learning. It shows how technology can be used to solve real-world problems in a simple and effective way.
+This project is a simple implementation of a fake news detection system using machine learning. It provides a user-friendly interface and demonstrates how AI can be used to identify misleading information.
 
 ---
 
